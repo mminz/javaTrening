@@ -1,1 +1,1 @@
-# javaTrening
+# javaTrening repository
