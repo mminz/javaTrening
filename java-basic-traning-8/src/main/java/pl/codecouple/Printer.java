@@ -4,12 +4,17 @@ class Printer {
 
     private StringBuilder stringBuilder;
 
-    Printer(String text) {
-        if (text == null || text.isEmpty()) {
-            throw new IllegalArgumentException("Zloooooooo!");
-        } else {
-            this.stringBuilder = new StringBuilder(text);
+    Printer(String text) throws EmptyStringException {
+
+        if(text == null) {
+            throw new IllegalArgumentException();
         }
+
+        if (text.isEmpty()) {
+            throw new EmptyStringException("Zlooo!");
+        }
+
+        this.stringBuilder = new StringBuilder(text);
     }
 
     public String reverseString() {
@@ -26,6 +31,14 @@ class Printer {
 
     public int indexC() {
         return stringBuilder.lastIndexOf("c");
+    }
+
+    public String replaceAwithC () {
+        return stringBuilder.replace(1, 2, "XXX").toString();
+    }
+
+    public String removeFirstIndex(){
+        return stringBuilder.deleteCharAt(0).toString();
     }
 
 

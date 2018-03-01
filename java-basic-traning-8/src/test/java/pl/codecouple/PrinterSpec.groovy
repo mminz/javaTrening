@@ -7,51 +7,74 @@ class PrinterSpec extends Specification {
 
     Should "return reverse string"() {
         given:
-        Printer printer = new Printer('abc')
+            Printer printer = new Printer('abc')
         when:
-        def result = printer.reverseString()
+            def result = printer.reverseString()
         then:
-        result == 'cba'
+            result == 'cba'
     }
 
     Should "return indexOf 'a' char from 'abc'"() {
         given:
-        Printer printer = new Printer('abc')
+            Printer printer = new Printer('abc')
         when:
-        def result = printer.indexA()
+            def result = printer.indexA()
         then:
-        result == 0
+            result == 0
 
     }
 
     Should "delete 'a' from 'abc'"() {
         given:
-        Printer printer = new Printer('abc')
+            Printer printer = new Printer('abc')
         when:
-        def result = printer.deleteA()
+            def result = printer.deleteA()
         then:
-        result == 'bc'
+            result == 'bc'
 
     }
 
-    Should "thrown IllegalArgumentException when given String in constructor is null or empty"() {
-        given:
-        Printer printer = new Printer("")
+    Should "thrown IllegalArgumentException when given String in constructor is null"() {
         when:
-        def result = printer.reverseString()
+            new Printer(null)
         then:
-        result == null
-
+            thrown(IllegalArgumentException)
 
     }
 
     Should "return lastIndexOf 'c' char from 'abc'"() {
         given:
-        Printer printer = new Printer('abc')
+            Printer printer = new Printer('abc')
         when:
-        def result = printer.indexC()
+            def result = printer.indexC()
         then:
-        result == 2
+            result == 2
+
+    }
+
+    Should "replace char in 'abc' on index '1' to '2' "() {
+        given:
+            Printer printer = new Printer('abc')
+        when:
+            def result = printer.replaceAwithC()
+        then:
+            result == 'aXXXc'
+
+    }
+
+    Should "remove char on first index from 'abc'"(){
+        given:
+            Printer printer = new Printer ('abc')
+        when:
+            def result = printer.removeFirstIndex ()
+        then:
+            result == 'bc'
+    }
+    Should "thrown EmptyStringException when given String in constructor is null or empty"() {
+        when:
+            new Printer("")
+        then:
+            thrown(EmptyStringException)
 
     }
 
