@@ -1,9 +1,8 @@
 package pl.codecouple;
 
 public class CheckedExepction extends Exception {
-    public CheckedExepction (){
 
+    public CheckedExepction(String s) {
+        super(s);
     }
-
-
 }
